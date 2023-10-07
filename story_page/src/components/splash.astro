@@ -1,0 +1,83 @@
+---
+import { Picture } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+import HeroImage from "~/components/hero-image.astro";
+import Starfield from "~/components/starfield.astro";
+import GitHubCorner from "./github-corner.astro";
+
+const widths = [350, 600];
+const sizes = "(min-width: 640px) 32vw, 57vw";
+---
+
+<section class="relative h-full bg-black p-8">
+  <Starfield />
+  <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
+    <HeroImage />
+  </div>
+  <div class="relative grid h-full place-items-center sm:grid-cols-2">
+    <h2
+      class="flex flex-col gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end"
+    >
+      <img src="/ziptech.png" class="h-24 text-white md:h-32" />
+      <div
+        class="gradient-text text-center font-extrabold tracking-tighter text-8xl"
+      >
+        The sky is the
+        <br /> only, limit.
+      </div>
+    </h2>
+    <div
+      id="astronaut"
+      class="w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
+    >
+      <Picture
+        class="mx-auto self-center rounded-xl"
+        width={400}
+        height={500}
+        widths={[400, 768]}
+        sizes="100vw, 432px"
+        aspectRatio="300:400"
+        alt="sa"
+        src={"/amar_piric.png"}
+      />
+    </div>
+  </div>
+</section>
+
+<noscript>
+  <style>
+    #splash-bg-fallback {
+      display: block;
+    }
+  </style>
+</noscript>
+
+<style>
+  @keyframes float {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(0, 30px, 0);
+    }
+  }
+
+  #astronaut {
+    animation: float linear 2.5s infinite alternate;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #astronaut {
+      @apply animate-none;
+    }
+
+    :global(#starfield) {
+      @apply hidden;
+    }
+
+    #splash-bg-fallback {
+      @apply block;
+    }
+  }
+</style>

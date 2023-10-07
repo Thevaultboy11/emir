@@ -1,0 +1,283 @@
+---
+import "@fontsource-variable/inter";
+import Compatibility from "~/components/compatibility.astro";
+import Features from "~/components/features.astro";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import Intro from "~/components/intro.astro";
+import Showcase from "~/components/showcase.astro";
+import Splash from "~/components/splash.astro";
+import "~/styles/index.css";
+import { Icon } from "astro-icon";
+
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+const description =
+  "Build fast websites, faster. Astro is a new kind of site builder for the modern web. Lightning-fast performance meets powerful developer experience.";
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.png" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+
+    <title>Emir Pirić</title>
+    <meta name="description" content={description} />
+
+    <!-- social media -->
+    <meta property="og:title" content="Astro" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- initialize theme -->
+    <script is:inline>
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Splash />
+    <div class="hidden px-8 py-32 md:block">
+      <div class="mx-auto flex max-w-7xl flex-col gap-y-8">
+        <h2
+          class="gradient-text w-full text-center font-extrabold tracking-tight text-6xl"
+        >
+          Story of <br />Emir Pirić
+        </h2>
+        <div
+          class="mx-auto grid w-full scroll-mt-24 grid-cols-3 grid-rows-2 gap-4"
+        >
+          <div class="col-span-2 col-start-2 row-span-1">
+            <img
+              src="/mojmilo.jpg"
+              width="800"
+              height="450"
+              class="mr-auto rounded-md"
+              loading="lazy"
+              alt="Ziptech Logo"
+              title="Ziptech Logo"
+              style="aspect-ratio: 16/9;"
+            />
+          </div>
+          <div class="col-span-1 row-span-1 text-primary text-xl">
+            Upbringing
+          </div>
+          <div class="col-span-2 row-span-2">
+            I am not like 16% of entrepreneurs who inherited wealth or had
+            mentors. This is my story. I grew up in an SOS village, a home on
+            Mojmilo for orphaned children. I can't help but mention my dear
+            Dina, a former employee of the SOS children's village. Besides my
+            mom Fikreta, she also provided selfless support during my upbringing
+            and maturation, and acted like a second mother.
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto -mt-24 flex max-w-7xl flex-col gap-y-8">
+        <div
+          class="mx-auto grid w-full scroll-mt-24 grid-cols-3 grid-rows-2 gap-4"
+        >
+          <div class="col-span-2 col-start-2 row-span-1">
+            <img
+              src="/football.png"
+              width="800"
+              height="450"
+              class="mr-auto rounded-md"
+              loading="lazy"
+              alt="Ziptech Logo"
+              title="Ziptech Logo"
+              style="aspect-ratio: 16/9;"
+            />
+          </div>
+          <div class="col-span-1 row-span-1 text-primary text-xl">
+            Fulfilling my Dreams
+          </div>
+          <div class="col-span-2 row-span-2">
+            You would think I got discouraged because of the position that I was
+            born into. My dream was to become the best sports player in the
+            world, something like Roger Federer.
+            <br />
+             I tried swimming, skiing, basketball, tennis, and then football.
+            The sport where I trained and showed the most talent is football.
+            <br /><br />
+             After years of hard work and practise I got an invite fromObec
+            Ohrady Finnaly my dreams came true when I was a player in the #1
+            Football Slovakia League. I finally made it. But was this really my
+            dream?
+
+            <br />
+            <br />
+
+             One day I got a higher calling for my reall passion tech and people.
+            I just did not see myself in the football industry.
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto flex max-w-7xl flex-col gap-y-8">
+        <div
+          class="mx-auto grid w-full scroll-mt-24 grid-cols-3 grid-rows-2 gap-4"
+        >
+          <div class="col-span-2 col-start-2 row-span-1">
+            <img
+              src="/message.jpg"
+              width="800"
+              height="450"
+              class="mr-auto rounded-md"
+              loading="lazy"
+              alt="Ziptech Logo"
+              title="Ziptech Logo"
+              style="aspect-ratio: 16/9;"
+            />
+          </div>
+          <div class="col-span-1 row-span-1 text-primary text-xl">
+            How the Ziptech story began.
+          </div>
+          <div class="col-span-2 row-span-2">
+            <p>
+              I remembered my beginnings and told myself, 'Everything in life
+              happens for a reason. I believe that every person on the planet
+              has their own time and a gift they can use in that time and
+              moment. My gift was a fascination with technology and people.
+              <br /><br />
+               I was always fascinated by San Francisco startups that started in
+              garages. In Bosnia IT companies want slaves, or code monkeys. I
+              wanted to change that by creating something for the young
+              generation.
+            </p>
+          </div>
+        </div>
+      </div>
+      <Intro />
+    </div>
+    <div class="block px-8 py-32 md:hidden">
+      <div class="mx-auto flex max-w-7xl flex-col gap-y-8">
+        <h2
+          class="gradient-text text-center font-extrabold tracking-tight text-6xl"
+        >
+          Story of <br />Emir Pirić
+        </h2>
+        <div class="mb-8 flex flex-col">
+          <div class="col-span-3">
+            <img
+              src="/mojmilo.jpg"
+              width="800"
+              height="450"
+              class="mr-auto rounded-md"
+              loading="lazy"
+              alt="Ziptech Logo"
+              title="Ziptech Logo"
+              style="aspect-ratio: 16/9;"
+            />
+          </div>
+
+          <div class="col-span-3 row-span-1">
+            <h1 class="my-4 text-primary text-2xl">Upbringing</h1>
+            <p>
+              I am not like 16% of entrepreneurs who inherited wealth or had
+              mentors. This is my story. I grew up in an SOS village, a home on
+              Mojmilo for orphaned children. I can't help but mention my dear
+              Dina, a former employee of the SOS children's village. Besides my
+              mom Fikreta, she also provided selfless support during my
+              upbringing and maturation, and acted like a second mother.
+            </p>
+          </div>
+        </div>
+        <div class="mb-8 flex flex-col">
+          <div class="col-span-3">
+            <img
+              src="/football.png"
+              width="800"
+              height="450"
+              class="mr-auto rounded-md"
+              loading="lazy"
+              alt="Ziptech Logo"
+              title="Ziptech Logo"
+              style="aspect-ratio: 16/9;"
+            />
+          </div>
+
+          <div class="col-span-3 row-span-1">
+            <h1 class="my-4 text-primary text-2xl">Fulfilling my Dreams</h1>
+            <p>
+              You would think I got discouraged because of the position that I
+              was born into. My dream was to become the best sports player in
+              the world, something like Roger Federer.
+              <br />
+               I tried swimming, skiing, basketball, tennis, and then football.
+              The sport where I trained and showed the most talent is football.
+              <br /><br />
+               After years of hard work and practise I got an invite fromObec
+              Ohrady Finnaly my dreams came true when I was a player in the #1
+              Football Slovakia League. I finally made it. But was this really
+              my dream?
+
+              <br />
+              <br />
+
+               One day I got a higher calling for my reall passion tech and people.
+              I just did not see myself in the football industry.
+            </p>
+          </div>
+        </div>
+        <div class="mb-8 flex flex-col">
+          <div class="col-span-3">
+            <img
+              src="/message.jpg"
+              width="800"
+              height="450"
+              class="mr-auto rounded-md"
+              loading="lazy"
+              alt="Ziptech Logo"
+              title="Ziptech Logo"
+              style="aspect-ratio: 16/9;"
+            />
+          </div>
+
+          <div class="col-span-3 row-span-1">
+            <h1 class="my-4 text-primary text-2xl">
+              How the Ziptech story began.
+            </h1>
+            <p>
+              I remembered my beginnings and told myself, 'Everything in life
+              happens for a reason. I believe that every person on the planet
+              has their own time and a gift they can use in that time and
+              moment. My gift was a fascination with technology and people.
+              <br /><br />
+               I was always fascinated by San Francisco startups that started in
+              garages. In Bosnia IT companies want slaves, or code monkeys. I
+              wanted to change that by creating something for the young
+              generation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <Intro />
+    </div>
+  </body>
+</html>
